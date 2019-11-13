@@ -69,21 +69,14 @@ public class Books {
         String name = input.nextLine();
         System.out.println("Author of a book:\t");
         String author = input.nextLine();
-        System.out.println("Quantity of a book:\t");
-        int quantity = input.nextInt();
         System.out.println("Status of a book:\t");
         String status = input.nextLine();
         return new Books(id, name, author, status);
-    }
-    public void deleteBooks(){
-        // search in DB and delete current book
     }
     public String toString(){
         return String.format("Book ID: %d\nBook Name: %s\nBook Author: %s\nStatus: %b",
                 this.getBookId(), this.getBookName(), this.getBookAuthor(), this.getStatus());
     }
-    public void inquiryBook(){
 
-    }
 }
 
