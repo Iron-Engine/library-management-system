@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -25,7 +26,7 @@ public class ViewBooksController {
     @FXML
     public Button backButton;
     @FXML
-    public Table
+    public TableView bookTable;
 
     @FXML
     public void add() {
