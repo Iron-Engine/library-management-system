@@ -10,10 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -21,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserController  implements Initializable {
+public class UserController implements Initializable {
     @FXML
     public Button booksButton;
     @FXML
@@ -30,6 +28,33 @@ public class UserController  implements Initializable {
     public Button librariansButton;
     @FXML
     public Button logoutButton;
+    @FXML
+    public Label firstNameLabel;
+    @FXML
+    public Label lastNameLabel;
+    @FXML
+    public Label fineLabel;
+    @FXML
+    public Label blockedLabel;
+    @FXML
+    public Label headerLabel;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        String userType = LoginController.user.getType().getClass().getName();
+        
+        firstNameLabel.setText(LoginController.user.getFirstName());
+        lastNameLabel.setText(LoginController.user.getLastName());
+        headerLabel.setText(userType + "Page");
+
+        if(userType.equals("User.Librarian")){
+            librariansButton.setVisible(false);
+        }
+        else if(userType.equals("User.Student")){
+            librariansButton.setVisible(false);
+            studentsButton.setVisible(false);
+        }
+    }
 
     @FXML
     public void viewBooks() {
@@ -74,9 +99,4 @@ public class UserController  implements Initializable {
         }
     }
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        librariansButton.setVisible(false);
-    }
 }

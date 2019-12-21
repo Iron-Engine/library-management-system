@@ -25,6 +25,7 @@ import java.util.ResourceBundle;
 
 public class LoginController {
 
+    public static User user;
     @FXML
     public Button button;
     @FXML
@@ -37,7 +38,6 @@ public class LoginController {
 
     @FXML
     public void LoginButtonHandler(ActionEvent event) {
-        User user = new User();
         int id = user.account.login(LoginField.getText(), PasswordField.getText());
 
         user = SqlGetUser.main(id);
