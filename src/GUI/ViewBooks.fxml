@@ -21,7 +21,7 @@
          <Font name="Arial Black" size="32.0" />
       </font>
    </Label>
-   <Button fx:id="deleteButton" layoutX="694.0" layoutY="650.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="126.0" text="Delete">
+   <Button fx:id="deleteButton" layoutX="694.0" layoutY="650.0" mnemonicParsing="false" onAction="#delete" prefHeight="37.0" prefWidth="126.0" text="Delete">
       <font>
          <Font size="22.0" />
       </font>
@@ -36,7 +36,7 @@
          <Font size="22.0" />
       </font>
    </Button>
-   <Button fx:id="backButton" layoutX="39.0" layoutY="31.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="75.0" text="⟸">
+   <Button fx:id="backButton" layoutX="39.0" layoutY="31.0" mnemonicParsing="false" onAction="#back" prefHeight="48.0" prefWidth="75.0" text="⟸">
       <font>
          <Font size="22.0" />
       </font>

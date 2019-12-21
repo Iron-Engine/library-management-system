@@ -19,7 +19,7 @@ public class Librarian extends User{
     public void returnBorrowedBooks(int bookIsbnInt){ SqlReturnBook.main(bookIsbnInt); }
     public void issueFine(int fineInt, int userIdInt){ SqlIssueFine.main(fineInt, userIdInt); }
 
-    public String viewAllStudents(){ return SqlViewUserType.main("User.Student");}
+//    public String viewAllStudents(){ return SqlViewUserType.main("User.Student");}
 
     public void addStudent(Student student){ SqlInsertUser.main(student); }
     public void modifyStudent(Student studentObj){ SqlModifyUser.main(studentObj); }

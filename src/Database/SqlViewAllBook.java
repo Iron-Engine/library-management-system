@@ -1,5 +1,10 @@
 package Database;
 
+import Book.Book;
+import Users.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,7 +15,7 @@ public class SqlViewAllBook {
     private static final String USER = "WmkvokN2BI";
     private static final String PASSWORD = "4ex9HBssOm";
 
-    public static String main() {
+    public static ObservableList<Book> main() {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -19,22 +24,24 @@ public class SqlViewAllBook {
         try {
 
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            String query = "SELECT All ISBN, title, author, subject, publishDate, status from books";
+            String query = "SELECT All ISBN, title, author, subject, publishDate, borrowerId, status from books";
 
             preparedStatement = connection.prepareStatement(query);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            ObservableList<Book> books = FXCollections.observableArrayList();
+
             while (resultSet.next()) {
-                str += String.format("ISBN: %d\nTitle: %s\nAuthor: %s\nSubject: %s\nPublish Date: %s\nAvailable: %b\n",
-                        resultSet.getInt(1),
+                books.add(new Book(resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
                         resultSet.getString(4),
                         resultSet.getString(5),
-                        resultSet.getBoolean(6));
+                        resultSet.getInt(6),
+                        resultSet.getBoolean(7)));
             }
-            return str;
+            return books;
         } catch (SQLException ex) {
 
             Logger logger = Logger.getLogger(SqlInsertUser.class.getName());

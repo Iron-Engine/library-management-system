@@ -41,28 +41,30 @@ public class UserController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String userType = LoginController.user.getType().getClass().getName();
+        String userType = LoginController.user.getClass().getName();
 
         firstNameLabel.setText(LoginController.user.getFirstName());
         lastNameLabel.setText(LoginController.user.getLastName());
 
-        if(userType.equals("User.Admin")){
-            headerLabel.setText("Admin Page");
-            fineLabel.setVisible(false);
-            blockedLabel.setVisible(false);
-        }
-        else if(userType.equals("User.Librarian")){
-            headerLabel.setText("Librarian Page");
-            librariansButton.setVisible(false);
-            fineLabel.setVisible(false);
-            blockedLabel.setVisible(false);
-        }
-        else if(userType.equals("User.Student")){
-            headerLabel.setText("Student Page");
-            fineLabel.setText(Integer.toString(LoginController.student.getFine()));
-            blockedLabel.setText(Boolean.toString(LoginController.student.getBlocked()));
-            librariansButton.setVisible(false);
-            studentsButton.setVisible(false);
+        switch (userType) {
+            case "Users.Admin":
+                headerLabel.setText("Admin Page");
+                fineLabel.setVisible(false);
+                blockedLabel.setVisible(false);
+                break;
+            case "Users.Librarian":
+                headerLabel.setText("Librarian Page");
+                librariansButton.setVisible(false);
+                fineLabel.setVisible(false);
+                blockedLabel.setVisible(false);
+                break;
+            case "Users.Student":
+                headerLabel.setText("Student Page");
+                fineLabel.setText(Integer.toString(LoginController.student.getFine()));
+                blockedLabel.setText(Boolean.toString(LoginController.student.getBlocked()));
+                librariansButton.setVisible(false);
+                studentsButton.setVisible(false);
+                break;
         }
     }
 
@@ -107,6 +109,18 @@ public class UserController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    public void logout() throws IOException {
+        Stage stageToBeClosed = (Stage) logoutButton.getScene().getWindow();
+        stageToBeClosed.close();
+
+        Parent parent = FXMLLoader.load(getClass().getResource("../GUI/Login.fxml"));
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setScene(new Scene(parent, 338, 400));
+        stage.setResizable(false);
+        stage.setTitle("Login");
+        stage.show();
     }
 
 }
