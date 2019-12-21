@@ -42,15 +42,25 @@ public class UserController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String userType = LoginController.user.getType().getClass().getName();
-        
+
         firstNameLabel.setText(LoginController.user.getFirstName());
         lastNameLabel.setText(LoginController.user.getLastName());
-        headerLabel.setText(userType + "Page");
 
-        if(userType.equals("User.Librarian")){
+        if(userType.equals("User.Admin")){
+            headerLabel.setText("Admin Page");
+            fineLabel.setVisible(false);
+            blockedLabel.setVisible(false);
+        }
+        else if(userType.equals("User.Librarian")){
+            headerLabel.setText("Librarian Page");
             librariansButton.setVisible(false);
+            fineLabel.setVisible(false);
+            blockedLabel.setVisible(false);
         }
         else if(userType.equals("User.Student")){
+            headerLabel.setText("Student Page");
+            fineLabel.setText(Integer.toString(LoginController.student.getFine()));
+            blockedLabel.setText(Boolean.toString(LoginController.student.getBlocked()));
             librariansButton.setVisible(false);
             studentsButton.setVisible(false);
         }

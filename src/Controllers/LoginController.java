@@ -26,6 +26,10 @@ import java.util.ResourceBundle;
 public class LoginController {
 
     public static User user;
+    public static Librarian librarian;
+    public static Student student;
+    public static Admin admin;
+
     @FXML
     public Button button;
     @FXML
@@ -45,6 +49,7 @@ public class LoginController {
 
         if (userType.equals("Users.Admin")) {
             try {
+                admin = SqlGetUser.returnAdmin(id);
                 Parent parent = FXMLLoader.load(getClass().getResource("../GUI/User.fxml"));
                 Stage stage = new Stage(StageStyle.DECORATED);
                 stage.setResizable(false);
@@ -58,6 +63,7 @@ public class LoginController {
         }
         else if (userType.equals("Users.Librarian")) {
             try {
+                librarian = SqlGetUser.returnLibrarian(id);
                 Parent parent = FXMLLoader.load(getClass().getResource("../GUI/User.fxml"));
                 Stage stage = new Stage(StageStyle.DECORATED);
                 stage.setResizable(false);
@@ -72,6 +78,7 @@ public class LoginController {
         }
         else if (userType.equals("Users.Student")) {
             try {
+                student = SqlGetUser.returnStudent(id);
                 Parent parent = FXMLLoader.load(getClass().getResource("../GUI/User.fxml"));
                 Stage stage = new Stage(StageStyle.DECORATED);
                 stage.setResizable(false);
