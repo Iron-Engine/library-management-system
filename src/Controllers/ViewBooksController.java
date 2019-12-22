@@ -3,6 +3,7 @@ package Controllers;
 import Book.Book;
 import Database.SqlDeleteUser;
 import Database.SqlGetBook;
+import Database.SqlReserveBook;
 import Database.SqlViewAllBook;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -130,7 +131,25 @@ public class ViewBooksController implements Initializable {
         stageToBeClosed.close();
     }
 
-    @FXML public void reserve(){}
+    @FXML public void reserve(){
+        try {
+            new SqlReserveBook().main(Integer.parseInt(isbnTextField.getText()), LoginController.student.getId());
+        }
+        catch (NumberFormatException e) {
+            try {
+                SuccessErrorController.message = "No Book (ISBN) found!";
+                Parent parent = FXMLLoader.load(getClass().getResource("../GUI/SuccessError.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                stage.setResizable(false);
+                stage.setTitle("Something Wrong");
+                stage.setScene(new Scene(parent));
+                stage.show();
+
+            } catch (IOException e2) {
+                e2.printStackTrace();
+            }
+        }
+    }
 
 }
 
