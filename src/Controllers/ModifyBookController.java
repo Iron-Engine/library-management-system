@@ -7,6 +7,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class ModifyBookController {
@@ -25,11 +26,15 @@ public class ModifyBookController {
 
     @FXML
     public void modify(){
+        LocalDate publishDateLocalDate = publishDateTextField.getValue();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String publishDateString = publishDateLocalDate.format(formatter);
+
         Book book = new Book(
                 Integer.parseInt(ISBNTextField.getText()),
                 titleTextField.getText(),
                 authorTextField.getText(),
-                publishDateTextField.getValue(),
+                publishDateString,
                 subjectTextField.getText(),
                 0,
                 true
