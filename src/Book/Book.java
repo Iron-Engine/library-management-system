@@ -1,5 +1,7 @@
 package Book;
 
+import java.time.LocalDate;
+
 public class Book {
 
     private int isbn;
@@ -7,7 +9,7 @@ public class Book {
     private String title;
     private String subject;
     private String author;
-    private String publishDate;
+    private LocalDate publishDate;
     private boolean status;
 
     // Books.Book default constructor
@@ -16,13 +18,13 @@ public class Book {
         setTitle("");
         setSubject("");
         setAuthor("");
-        setPublishDate("");
+        setPublishDate(null);
         setBorrowerId(0);
         setStatus(true);
     }
 
     // Books.Book constructor
-    public Book(int isbn, String title, String author, String publishDate, String subject, int borrowerId, boolean status){
+    public Book(int isbn, String title, String author, LocalDate publishDate, String subject, int borrowerId, boolean status){
         setIsbn(isbn);
         setTitle(title);
         setAuthor(author);
@@ -33,14 +35,14 @@ public class Book {
     }
 
     // setters
-    private void setIsbn(int id){ this.isbn = isbn; }
+    private void setIsbn(int isbn){ this.isbn = isbn; }
     private void setTitle(String title){
         this.title = title;
     }
     private void setAuthor(String author){
         this.author = author;
     }
-    private void setPublishDate(String publishDate){
+    private void setPublishDate(LocalDate publishDate){
         this.publishDate = publishDate;
     }
     private void setSubject(String subject){
@@ -61,7 +63,7 @@ public class Book {
     public String getAuthor(){
         return this.author;
     }
-    public String getPublishDate(){ return this.publishDate; }
+    public LocalDate getPublishDate(){ return this.publishDate; }
     public String getSubject(){
         return this.subject;
     }

@@ -1,16 +1,16 @@
 package Controllers;
 
 import Users.Librarian;
+import Users.Student;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-
-public class AddLibrarianController {
+public class ModifyStudentController {
     @FXML
-    public Button addButton;
+    public Button modifyButton;
     @FXML
     public TextField firstNameTextField;
     @FXML
@@ -19,20 +19,26 @@ public class AddLibrarianController {
     public TextField loginTextField;
     @FXML
     public PasswordField passwordPasswordField;
+    @FXML
+    public TextField fineTextField;
+    @FXML
+    public TextField blockedTextField;
 
     @FXML
-    public void add(){
-        Librarian librarian = new Librarian(
+    public void modify(){
+        Student student = new Student(
                 0,
                 firstNameTextField.getText(),
                 lastNameTextField.getText(),
                 "Users.Librarian",
+                0,
+                false,
                 loginTextField.getText(),
                 passwordPasswordField.getText()
         );
-        LoginController.admin.addLibrarian(librarian);
+        new Librarian().modifyStudent(student);
 
-        Stage stageToBeClosed = (Stage) addButton.getScene().getWindow();
+        Stage stageToBeClosed = (Stage) modifyButton.getScene().getWindow();
         stageToBeClosed.close();
     }
 

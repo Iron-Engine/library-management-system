@@ -9,9 +9,9 @@ import javafx.stage.Stage;
 
 import java.time.format.DateTimeFormatter;
 
-public class AddBookController {
+public class ModifyBookController {
     @FXML
-    public Button addButton;
+    public Button modifyButton;
     @FXML
     public TextField ISBNTextField;
     @FXML
@@ -24,7 +24,7 @@ public class AddBookController {
     public DatePicker publishDateTextField;
 
     @FXML
-    public void add() {
+    public void modify(){
         Book book = new Book(
                 Integer.parseInt(ISBNTextField.getText()),
                 titleTextField.getText(),
@@ -34,9 +34,10 @@ public class AddBookController {
                 0,
                 true
         );
-        LoginController.librarian.addBook(book);
+        LoginController.librarian.modifyBook(book);
 
-        Stage stageToBeClosed = (Stage) addButton.getScene().getWindow();
+        Stage stageToBeClosed = (Stage) modifyButton.getScene().getWindow();
         stageToBeClosed.close();
     }
+
 }

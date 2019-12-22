@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="486.0" prefWidth="360.0" style="-fx-background-color: #2E3348" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifyStudentController">
+   <children>
+      <PasswordField fx:id="passwordPasswordField" layoutX="55.0" layoutY="246.0" prefHeight="40.0" prefWidth="270.0" promptText="Password" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </PasswordField>
+      <TextField fx:id="lastNameTextField" layoutX="56.0" layoutY="146.0" prefHeight="40.0" prefWidth="270.0" promptText="Last Name" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+      <Label alignment="CENTER" layoutX="22.0" layoutY="24.0" prefHeight="63.0" prefWidth="338.0" text="Modify Student" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="34.0" />
+         </font>
+      </Label>
+      <TextField fx:id="firstNameTextField" layoutX="56.0" layoutY="95.0" prefHeight="40.0" prefWidth="270.0" promptText="First Name" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="loginTextField" layoutX="55.0" layoutY="196.0" prefHeight="40.0" prefWidth="270.0" promptText="Login" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="fineTextField" layoutX="55.0" layoutY="295.0" prefHeight="40.0" prefWidth="270.0" promptText="Fine" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="blockedTextField" layoutX="55.0" layoutY="344.0" prefHeight="40.0" prefWidth="270.0" promptText="Blocked" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+      <Button fx:id="modifyButton" layoutX="113.0" layoutY="402.0" mnemonicParsing="false" onAction="#modify" prefHeight="49.0" prefWidth="134.0" text="Modify">
+         <font>
+            <Font name="Calibri" size="26.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

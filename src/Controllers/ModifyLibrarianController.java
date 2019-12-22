@@ -7,10 +7,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-
-public class AddLibrarianController {
+public class ModifyLibrarianController {
     @FXML
-    public Button addButton;
+    public Button modifyButton;
     @FXML
     public TextField firstNameTextField;
     @FXML
@@ -21,7 +20,7 @@ public class AddLibrarianController {
     public PasswordField passwordPasswordField;
 
     @FXML
-    public void add(){
+    public void modify(){
         Librarian librarian = new Librarian(
                 0,
                 firstNameTextField.getText(),
@@ -30,10 +29,9 @@ public class AddLibrarianController {
                 loginTextField.getText(),
                 passwordPasswordField.getText()
         );
-        LoginController.admin.addLibrarian(librarian);
+        LoginController.admin.modifyLibrarian(librarian);
 
-        Stage stageToBeClosed = (Stage) addButton.getScene().getWindow();
+        Stage stageToBeClosed = (Stage) modifyButton.getScene().getWindow();
         stageToBeClosed.close();
     }
-
 }

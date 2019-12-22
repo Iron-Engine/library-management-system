@@ -27,21 +27,31 @@ public class ViewStudentController {
 
     @FXML
     public void add() {
-//        try {
-//            Parent parent = FXMLLoader.load(getClass().getResource("../GUI/ViewBooks.fxml"));
-//            Stage stage = new Stage(StageStyle.DECORATED);
-//            stage.setResizable(false);
-//            stage.setTitle("Books");
-//            stage.setScene(new Scene(parent));
-//            stage.show();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("../GUI/AddStudent.fxml"));
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setResizable(false);
+            stage.setTitle("Books");
+            stage.setScene(new Scene(parent));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     @FXML
     public void modify() {
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("../GUI/ModifyStudent.fxml"));
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setResizable(false);
+            stage.setTitle("Modify Books");
+            stage.setScene(new Scene(parent));
+            stage.show();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     @FXML
     public void delete() {
