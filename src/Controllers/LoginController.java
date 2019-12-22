@@ -26,7 +26,7 @@ public class LoginController {
 
     @FXML public void login() {
         try {
-            int id = user.account.login(loginTextField.getText(), passwordTextField.getText());
+            int id = user.login(loginTextField.getText(), passwordTextField.getText());
 
             user = SqlGetUser.main(id);
             assert user != null;
@@ -96,5 +96,6 @@ public class LoginController {
 
         }
     }
+
 }
 

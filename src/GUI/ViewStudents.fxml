@@ -5,14 +5,15 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="713.0" prefWidth="883.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ViewStudentController">
-    <TableView fx:id="studentTable" layoutX="-1.0" layoutY="110.0" prefHeight="508.0" prefWidth="883.0" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="110.0">
+    <TableView fx:id="studentTableView" layoutX="-1.0" layoutY="110.0" prefHeight="508.0" prefWidth="1000.0" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="110.0">
     <columns>
-        <TableColumn fx:id="colIsbn" maxWidth="4500.0" prefWidth="124.53335875272751" text="ID" />
-        <TableColumn fx:id="colTitle" maxWidth="6000.0" prefWidth="146.6666259765625" text="First Name" />
-        <TableColumn fx:id="colAuthor" minWidth="0.0" prefWidth="153.59994506835938" text="Last Name" />
-        <TableColumn fx:id="colEdition" minWidth="0.0" prefWidth="154.6666259765625" text="Login" />
-        <TableColumn fx:id="colPublisher" minWidth="0.0" prefWidth="157.5999755859375" text="Password" />
-         <TableColumn prefWidth="144.0" text="Blocked" />
+        <TableColumn fx:id="idColumn" maxWidth="4500.0" prefWidth="71.0" text="ID" />
+        <TableColumn fx:id="firstNameColumn" maxWidth="6000.0" prefWidth="164.99998474121094" text="First Name" />
+        <TableColumn fx:id="lastNameColumn" minWidth="0.0" prefWidth="190.0" text="Last Name" />
+         <TableColumn fx:id="fineColumn" prefWidth="74.0" text="Fine" />
+        <TableColumn fx:id="usernameColumn" minWidth="0.0" prefWidth="156.0" text="Username" />
+        <TableColumn fx:id="passwordColumn" minWidth="0.0" prefWidth="157.5999755859375" text="Password" />
+         <TableColumn fx:id="blockedColumn" prefWidth="144.0" text="Blocked" />
     </columns>
     </TableView>
    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="377.0" layoutY="31.0" text="Students" textAlignment="CENTER" textFill="#edeaea">
@@ -30,7 +31,7 @@
          <Font size="22.0" />
       </font>
    </Button>
-   <Button fx:id="modifyButton" layoutX="314.0" layoutY="640.0" mnemonicParsing="false" onAction="#modify" prefHeight="48.0" prefWidth="126.0" text="Modify">
+   <Button fx:id="modifyButton" layoutX="305.0" layoutY="640.0" mnemonicParsing="false" onAction="#modify" prefHeight="48.0" prefWidth="126.0" text="Modify">
       <font>
          <Font size="22.0" />
       </font>

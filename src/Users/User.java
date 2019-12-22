@@ -1,5 +1,6 @@
 package Users;
 import Book.Book;
+import Database.SqlLoginUser;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -10,16 +11,18 @@ public class User {
     private SimpleStringProperty firstName;
     private SimpleStringProperty lastName;
     private SimpleStringProperty type;
+    private SimpleStringProperty username;
+    private SimpleStringProperty password;
 
     public Book book;
-    public Account account;
 
     public User(){
         setId(0);
         setFirstName("");
         setSecondName("");
         setType("");
-        account = new Account();
+        setLogin("");
+        setPassword("");
         book = new Book();
     }
 
@@ -28,19 +31,28 @@ public class User {
         setFirstName(firstName);
         setSecondName(lastName);
         setType(type);
-        account = new Account(username, password);
+        setLogin(username);
+        setPassword(password);
     }
     // getters
     public int getId(){ return this.id.get(); }
     public String getFirstName(){ return this.firstName.get(); }
     public String getLastName(){ return this.lastName.get(); }
     public String getType(){ return this.type.get(); }
+    public String getUsername(){ return this.username.get(); }
+    public String getPassword(){ return this.password.get(); }
 
     // setters
-    public void setId(int id){ this.id.set(id); }
-    private void setFirstName(String firstName){ this.firstName.set(firstName); }
-    private void setSecondName(String secondName){ this.lastName.set(secondName); }
-    private void setType(String typeStr) { this.type.set(typeStr); }
+    public void setId(int id){ this.id = new SimpleIntegerProperty(id); }
+    private void setFirstName(String firstName){ this.firstName = new SimpleStringProperty(firstName); }
+    private void setSecondName(String secondName){ this.lastName = new SimpleStringProperty(secondName); }
+    private void setType(String typeStr) { this.type = new SimpleStringProperty(typeStr); }
+    public void setLogin(String username){ this.username = new SimpleStringProperty(username); }
+    public void setPassword(String password){ this.password = new SimpleStringProperty(password); }
+
+    public int login(String usernameStr, String passwordStr){
+        return SqlLoginUser.main(usernameStr, passwordStr);
+    }
 
     public String toString(){
         return String.format("User ID: %d\nUser Firstname: %s\nUser Lastname: %s\nUser Type: %s\n",

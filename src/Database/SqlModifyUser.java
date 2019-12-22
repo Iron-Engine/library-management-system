@@ -28,8 +28,8 @@ public class SqlModifyUser {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, userObj.getFirstName());
             preparedStatement.setString(2, userObj.getLastName());
-            preparedStatement.setString(3, userObj.account.getLogin());
-            preparedStatement.setString(4, userObj.account.getPassword());
+            preparedStatement.setString(3, userObj.getUsername());
+            preparedStatement.setString(4, userObj.getPassword());
             preparedStatement.setInt(5, userObj.getId());
 
             preparedStatement.executeUpdate();

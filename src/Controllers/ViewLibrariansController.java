@@ -8,7 +8,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.io.IOException;
@@ -22,9 +24,20 @@ public class ViewLibrariansController implements Initializable {
     @FXML public Button deleteButton;
     @FXML public Button backButton;
     @FXML public TableView<Librarian> librariansTableView;
+    @FXML public TableColumn<Librarian, Integer> idColumn;
+    @FXML public TableColumn<Librarian, String> firstNameColumn;
+    @FXML public TableColumn<Librarian, String> lastNameColumn;
+    @FXML public TableColumn<Librarian, String> loginColumn;
+    @FXML public TableColumn<Librarian, String> passwordColumn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        idColumn.setCellValueFactory(new PropertyValueFactory<Librarian, Integer>("id"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<Librarian, String>("firstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<Librarian, String>("lastName"));
+        loginColumn.setCellValueFactory(new PropertyValueFactory<Librarian, String>("username"));
+        passwordColumn.setCellValueFactory(new PropertyValueFactory<Librarian, String>("password"));
+
         librariansTableView.setItems(SqlViewUserType.librarian());
     }
 

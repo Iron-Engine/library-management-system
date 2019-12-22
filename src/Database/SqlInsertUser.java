@@ -30,8 +30,8 @@ public class SqlInsertUser {
             preparedStatement.setString(1, userObj.getFirstName());
             preparedStatement.setString(2, userObj.getLastName());
             preparedStatement.setString(3, userObj.getClass().getName());
-            preparedStatement.setString(4, userObj.account.getLogin());
-            preparedStatement.setString(5, userObj.account.getPassword());
+            preparedStatement.setString(4, userObj.getUsername());
+            preparedStatement.setString(5, userObj.getPassword());
             preparedStatement.setInt(6, 0);
             preparedStatement.executeUpdate();
 

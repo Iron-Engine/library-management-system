@@ -44,14 +44,13 @@ public class ViewBooksController implements Initializable {
         } else
             reserveButton.setVisible(false);
 
-
-//        ISBNColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("1223"));
-//        subjectColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("Math"));
-//        authorColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("James Gun"));
-//        publishDateColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("22/12/1999"));
-//        titleColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("Math for War"));
-//        borrowerIDColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("1"));
-//        availableColumn.setCellValueFactory(new PropertyValueFactory<Book, Boolean>("true"));
+        ISBNColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("isbn"));
+        subjectColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("subject"));
+        authorColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("author"));
+        publishDateColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("publishDate"));
+        titleColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
+        borrowerIDColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("borrowerId"));
+        availableColumn.setCellValueFactory(new PropertyValueFactory<Book, Boolean>("status"));
 
         booksTableView.setItems(SqlViewAllBook.main());
     }

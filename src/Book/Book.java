@@ -37,22 +37,22 @@ public class Book {
     }
 
     // setters
-    private void setIsbn(int isbn){ this.isbn.set(isbn); }
+    private void setIsbn(int isbn){ this.isbn = new SimpleIntegerProperty(isbn); }
     private void setTitle(String title){
-        this.title.set(title);
+        this.title = new SimpleStringProperty(title);
     }
     private void setAuthor(String author){
-        this.author.set(author);
+        this.author = new SimpleStringProperty(author);
     }
     private void setPublishDate(String publishDate){
-        this.publishDate.set(publishDate);
+        this.publishDate = new SimpleStringProperty(publishDate);
     }
     private void setSubject(String subject){
-        this.subject.set(subject);
+        this.subject = new SimpleStringProperty(subject);
     }
-    private void setBorrowerId(int borrowerId) { this.borrowerId.set(borrowerId); }
+    private void setBorrowerId(int borrowerId) { this.borrowerId = new SimpleIntegerProperty(borrowerId); }
     private void setStatus(boolean status){
-        this.status.set(status);
+        this.status = new SimpleBooleanProperty();
     }
 
     //getters

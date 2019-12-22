@@ -23,6 +23,8 @@ public class UserController implements Initializable {
     @FXML public Label lastNameLabel;
     @FXML public Label fineLabel;
     @FXML public Label blockedLabel;
+    @FXML public Label fineMainLabel;
+    @FXML public Label blockedMainLabel;
     @FXML public Label headerLabel;
     @FXML public Button myBooksButton;
 
@@ -37,14 +39,18 @@ public class UserController implements Initializable {
             case "Users.Admin":
                 headerLabel.setText("Admin Page");
                 fineLabel.setVisible(false);
+                fineMainLabel.setVisible(false);
                 blockedLabel.setVisible(false);
+                blockedMainLabel.setVisible(false);
                 myBooksButton.setVisible(false);
                 break;
             case "Users.Librarian":
                 headerLabel.setText("Librarian Page");
                 librariansButton.setVisible(false);
                 fineLabel.setVisible(false);
+                fineMainLabel.setVisible(false);
                 blockedLabel.setVisible(false);
+                blockedMainLabel.setVisible(false);
                 myBooksButton.setVisible(false);
                 break;
             case "Users.Student":

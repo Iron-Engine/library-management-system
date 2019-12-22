@@ -21,8 +21,8 @@ public class Student extends User{
     }
 
     // setters
-    public void setFine(int fine){ this.fine.set(fine); }
-    private void setBlocked(boolean blocked) { this.blocked.set(blocked); }
+    public void setFine(int fine){ this.fine = new SimpleIntegerProperty(fine); }
+    private void setBlocked(boolean blocked) { this.blocked = new SimpleBooleanProperty(blocked); }
 
     //getters
     public boolean getBlocked(){ return this.blocked.get(); }
