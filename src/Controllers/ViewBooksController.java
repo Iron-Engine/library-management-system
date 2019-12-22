@@ -30,7 +30,7 @@ public class ViewBooksController implements Initializable {
     @FXML public TableColumn<Book, Integer> ISBNColumn;
     @FXML public TableColumn<Book, String> subjectColumn;
     @FXML public TableColumn<Book, String> authorColumn;
-    @FXML public TableColumn<Book, Date> publishDateColumn;
+    @FXML public TableColumn<Book, String> publishDateColumn;
     @FXML public TableColumn<Book, String> titleColumn;
     @FXML public TableColumn<Book, Integer> borrowerIDColumn;
     @FXML public TableColumn<Book, Boolean> availableColumn;
@@ -74,7 +74,7 @@ public class ViewBooksController implements Initializable {
     @FXML public void reserve(){}
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // baktiwka
+
         String userType = LoginController.user.getClass().getName();
         if (userType.equals("Users.Student")) {
             addButton.setVisible(false);
@@ -83,16 +83,17 @@ public class ViewBooksController implements Initializable {
         } else
             reserveButton.setVisible(false);
 
-        // dly tablici
+
         ISBNColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("1223"));
         subjectColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("Math"));
         authorColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("James Gun"));
-        publishDateColumn.setCellValueFactory(new PropertyValueFactory<Book, Date>("22/12/1999"));
+        publishDateColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("22/12/1999"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("Math for War"));
         borrowerIDColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("1"));
         availableColumn.setCellValueFactory(new PropertyValueFactory<Book, Boolean>("true"));
 
         booksTableView.setItems(SqlViewAllBook.main());
+        System.out.println(SqlViewAllBook.main());
     }
 }
 

@@ -30,61 +30,76 @@ public class LoginController {
 
     @FXML
     public void login() {
-        int id = user.account.login(loginTextField.getText(), passwordTextField.getText());
+        try {
+            int id = user.account.login(loginTextField.getText(), passwordTextField.getText());
 
-        user = SqlGetUser.main(id);
-        assert user != null;
-        String userType = user.getClass().getName();
+            user = SqlGetUser.main(id);
+            assert user != null;
+            String userType = user.getClass().getName();
 
-        Stage stageToBeClosed = (Stage) loginButton.getScene().getWindow();
-        stageToBeClosed.close();
+            Stage stageToBeClosed = (Stage) loginButton.getScene().getWindow();
+            stageToBeClosed.close();
 
-        switch (userType) {
-            case "Users.Admin":
-                try {
-                    admin = SqlGetUser.returnAdmin(id);
-                    Parent parent = FXMLLoader.load(getClass().getResource("../GUI/User.fxml"));
-                    Stage stage = new Stage(StageStyle.DECORATED);
-                    stage.setResizable(false);
-                    stage.setTitle("Admin Page");
-                    stage.setScene(new Scene(parent));
-                    stage.show();
+            switch (userType) {
+                case "Users.Admin":
+                    try {
+                        admin = SqlGetUser.returnAdmin(id);
+                        Parent parent = FXMLLoader.load(getClass().getResource("../GUI/User.fxml"));
+                        Stage stage = new Stage(StageStyle.DECORATED);
+                        stage.setResizable(false);
+                        stage.setTitle("Admin Page");
+                        stage.setScene(new Scene(parent));
+                        stage.show();
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "Users.Librarian":
-                try {
-                    librarian = SqlGetUser.returnLibrarian(id);
-                    Parent parent = FXMLLoader.load(getClass().getResource("../GUI/User.fxml"));
-                    Stage stage = new Stage(StageStyle.DECORATED);
-                    stage.setResizable(false);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case "Users.Librarian":
+                    try {
+                        librarian = SqlGetUser.returnLibrarian(id);
+                        Parent parent = FXMLLoader.load(getClass().getResource("../GUI/User.fxml"));
+                        Stage stage = new Stage(StageStyle.DECORATED);
+                        stage.setResizable(false);
 
-                    stage.setTitle("Librarian Page");
-                    stage.setScene(new Scene(parent));
-                    stage.show();
+                        stage.setTitle("Librarian Page");
+                        stage.setScene(new Scene(parent));
+                        stage.show();
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "Users.Student":
-                try {
-                    student = SqlGetUser.returnStudent(id);
-                    Parent parent = FXMLLoader.load(getClass().getResource("../GUI/User.fxml"));
-                    Stage stage = new Stage(StageStyle.DECORATED);
-                    stage.setResizable(false);
-                    stage.setTitle("Student Page");
-                    stage.setScene(new Scene(parent));
-                    stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case "Users.Student":
+                    try {
+                        student = SqlGetUser.returnStudent(id);
+                        Parent parent = FXMLLoader.load(getClass().getResource("../GUI/User.fxml"));
+                        Stage stage = new Stage(StageStyle.DECORATED);
+                        stage.setResizable(false);
+                        stage.setTitle("Student Page");
+                        stage.setScene(new Scene(parent));
+                        stage.show();
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                break;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+            }
+        } catch (NullPointerException e) {
+            try {
+                SuccessErrorController.message = "Wrong Username or Password";
+                Parent parent = FXMLLoader.load(getClass().getResource("../GUI/SuccessError.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                stage.setResizable(false);
+                stage.setTitle("Something Wrong");
+                stage.setScene(new Scene(parent));
+                stage.show();
+
+            } catch (IOException e2) {
+                e2.printStackTrace();
+            }
+
         }
     }
-
 }
 
