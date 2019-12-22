@@ -1,14 +1,18 @@
 package Book;
 
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Book {
 
-    private int isbn;
-    private int borrowerId;
-    private String title;
-    private String subject;
-    private String author;
-    private String publishDate;
-    private boolean status;
+    private SimpleIntegerProperty isbn;
+    private SimpleIntegerProperty borrowerId;
+    private SimpleStringProperty title;
+    private SimpleStringProperty subject;
+    private SimpleStringProperty author;
+    private SimpleStringProperty publishDate;
+    private SimpleBooleanProperty status;
 
     // Books.Book default constructor
     public Book(){
@@ -16,7 +20,7 @@ public class Book {
         setTitle("");
         setSubject("");
         setAuthor("");
-        setPublishDate(null);
+        setPublishDate("");
         setBorrowerId(0);
         setStatus(true);
     }
@@ -33,43 +37,41 @@ public class Book {
     }
 
     // setters
-    private void setIsbn(int isbn){ this.isbn = isbn; }
+    private void setIsbn(int isbn){ this.isbn.set(isbn); }
     private void setTitle(String title){
-        this.title = title;
+        this.title.set(title);
     }
     private void setAuthor(String author){
-        this.author = author;
+        this.author.set(author);
     }
     private void setPublishDate(String publishDate){
-        this.publishDate = publishDate;
+        this.publishDate.set(publishDate);
     }
     private void setSubject(String subject){
-        this.subject = subject;
+        this.subject.set(subject);
     }
-    private void setBorrowerId(int borrowerId) { this.borrowerId = borrowerId; }
+    private void setBorrowerId(int borrowerId) { this.borrowerId.set(borrowerId); }
     private void setStatus(boolean status){
-        this.status = status;
+        this.status.set(status);
     }
 
     //getters
     public int getIsbn(){
-        return this.isbn;
+        return this.isbn.get();
     }
     public String getTitle(){
-        return this.title;
+        return this.title.get();
     }
-    public String getAuthor(){
-        return this.author;
-    }
-    public String getPublishDate(){ return this.publishDate; }
+    public String getAuthor(){ return this.author.get(); }
+    public String getPublishDate(){ return this.publishDate.get(); }
     public String getSubject(){
-        return this.subject;
+        return this.subject.get();
     }
     public int getBorrowerId(){
-        return this.borrowerId;
+        return this.borrowerId.get();
     }
     public boolean getStatus(){
-        return this.status;
+        return this.status.get();
     }
 
     // toString methods

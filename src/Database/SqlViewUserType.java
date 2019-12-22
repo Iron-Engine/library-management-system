@@ -72,6 +72,7 @@ public class SqlViewUserType {
         }
         return null;
     }
+
     public static ObservableList<Librarian> librarian() {
 
         Connection connection = null;
@@ -123,6 +124,7 @@ public class SqlViewUserType {
         }
         return null;
     }
+
     public static ObservableList<Student> student() {
 
         Connection connection = null;
@@ -176,4 +178,5 @@ public class SqlViewUserType {
         }
         return null;
     }
+
 }

@@ -14,26 +14,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class UserController implements Initializable {
-    @FXML
-    public Button booksButton;
-    @FXML
-    public Button studentsButton;
-    @FXML
-    public Button librariansButton;
-    @FXML
-    public Button logoutButton;
-    @FXML
-    public Label firstNameLabel;
-    @FXML
-    public Label lastNameLabel;
-    @FXML
-    public Label fineLabel;
-    @FXML
-    public Label blockedLabel;
-    @FXML
-    public Label headerLabel;
-    @FXML
-    public Button myBooksButton;
+
+    @FXML public Button booksButton;
+    @FXML public Button studentsButton;
+    @FXML public Button librariansButton;
+    @FXML public Button logoutButton;
+    @FXML public Label firstNameLabel;
+    @FXML public Label lastNameLabel;
+    @FXML public Label fineLabel;
+    @FXML public Label blockedLabel;
+    @FXML public Label headerLabel;
+    @FXML public Button myBooksButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,8 +60,7 @@ public class UserController implements Initializable {
         }
     }
 
-    @FXML
-    public void viewBooks() {
+    @FXML public void viewBooks() {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("../GUI/ViewBooks.fxml"));
             Stage stage = new Stage(StageStyle.DECORATED);
@@ -83,8 +73,8 @@ public class UserController implements Initializable {
             e.printStackTrace();
         }
     }
-    @FXML
-    public void viewLibrarians() {
+
+    @FXML public void viewLibrarians() {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("../GUI/ViewLibrarians.fxml"));
             Stage stage = new Stage(StageStyle.DECORATED);
@@ -97,8 +87,8 @@ public class UserController implements Initializable {
             e.printStackTrace();
         }
     }
-    @FXML
-    public void viewStudents() {
+
+    @FXML public void viewStudents() {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("../GUI/ViewStudents.fxml"));
             Stage stage = new Stage(StageStyle.DECORATED);
@@ -111,6 +101,7 @@ public class UserController implements Initializable {
             e.printStackTrace();
         }
     }
+
     @FXML public void viewMyBooks() {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("../GUI/ViewMyBooks.fxml"));
@@ -124,8 +115,8 @@ public class UserController implements Initializable {
             e.printStackTrace();
         }
     }
-    @FXML
-    public void logout() throws IOException {
+
+    @FXML public void logout() throws IOException {
         Stage stageToBeClosed = (Stage) logoutButton.getScene().getWindow();
         stageToBeClosed.close();
 

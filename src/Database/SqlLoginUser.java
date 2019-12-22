@@ -58,5 +58,6 @@ public class SqlLoginUser {
         }
         return 0;
     }
+
 }
 

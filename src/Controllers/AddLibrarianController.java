@@ -9,19 +9,14 @@ import javafx.stage.Stage;
 
 
 public class AddLibrarianController {
-    @FXML
-    public Button addButton;
-    @FXML
-    public TextField firstNameTextField;
-    @FXML
-    public TextField lastNameTextField;
-    @FXML
-    public TextField loginTextField;
-    @FXML
-    public PasswordField passwordPasswordField;
 
-    @FXML
-    public void add(){
+    @FXML public Button addButton;
+    @FXML public TextField firstNameTextField;
+    @FXML public TextField lastNameTextField;
+    @FXML public TextField loginTextField;
+    @FXML public PasswordField passwordPasswordField;
+
+    @FXML public void add(){
         Librarian librarian = new Librarian(
                 0,
                 firstNameTextField.getText(),

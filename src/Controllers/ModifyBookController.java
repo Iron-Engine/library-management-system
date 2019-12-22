@@ -11,21 +11,15 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class ModifyBookController {
-    @FXML
-    public Button modifyButton;
-    @FXML
-    public TextField ISBNTextField;
-    @FXML
-    public TextField subjectTextField;
-    @FXML
-    public TextField authorTextField;
-    @FXML
-    public TextField titleTextField;
-    @FXML
-    public DatePicker publishDateTextField;
 
-    @FXML
-    public void modify(){
+    @FXML public Button modifyButton;
+    @FXML public TextField ISBNTextField;
+    @FXML public TextField subjectTextField;
+    @FXML public TextField authorTextField;
+    @FXML public TextField titleTextField;
+    @FXML public DatePicker publishDateTextField;
+
+    @FXML public void modify(){
         LocalDate publishDateLocalDate = publishDateTextField.getValue();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String publishDateString = publishDateLocalDate.format(formatter);

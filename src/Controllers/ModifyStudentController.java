@@ -9,23 +9,16 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class ModifyStudentController {
-    @FXML
-    public Button modifyButton;
-    @FXML
-    public TextField firstNameTextField;
-    @FXML
-    public TextField lastNameTextField;
-    @FXML
-    public TextField loginTextField;
-    @FXML
-    public PasswordField passwordPasswordField;
-    @FXML
-    public TextField fineTextField;
-    @FXML
-    public TextField blockedTextField;
 
-    @FXML
-    public void modify(){
+    @FXML public Button modifyButton;
+    @FXML public TextField firstNameTextField;
+    @FXML public TextField lastNameTextField;
+    @FXML public TextField loginTextField;
+    @FXML public PasswordField passwordPasswordField;
+    @FXML public TextField fineTextField;
+    @FXML public TextField blockedTextField;
+
+    @FXML public void modify(){
         Student student = new Student(
                 0,
                 firstNameTextField.getText(),

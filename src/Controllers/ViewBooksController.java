@@ -15,8 +15,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URL;
-
-import java.sql.Date;
 import java.util.ResourceBundle;
 
 public class ViewBooksController implements Initializable {
@@ -34,6 +32,29 @@ public class ViewBooksController implements Initializable {
     @FXML public TableColumn<Book, String> titleColumn;
     @FXML public TableColumn<Book, Integer> borrowerIDColumn;
     @FXML public TableColumn<Book, Boolean> availableColumn;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        String userType = LoginController.user.getClass().getName();
+        if (userType.equals("Users.Student")) {
+            addButton.setVisible(false);
+            modifyButton.setVisible(false);
+            deleteButton.setVisible(false);
+        } else
+            reserveButton.setVisible(false);
+
+
+//        ISBNColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("1223"));
+//        subjectColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("Math"));
+//        authorColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("James Gun"));
+//        publishDateColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("22/12/1999"));
+//        titleColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("Math for War"));
+//        borrowerIDColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("1"));
+//        availableColumn.setCellValueFactory(new PropertyValueFactory<Book, Boolean>("true"));
+
+        booksTableView.setItems(SqlViewAllBook.main());
+    }
 
     @FXML public void add() {
         try {
@@ -71,29 +92,8 @@ public class ViewBooksController implements Initializable {
         Stage stageToBeClosed = (Stage) backButton.getScene().getWindow();
         stageToBeClosed.close();
     }
+
     @FXML public void reserve(){}
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        String userType = LoginController.user.getClass().getName();
-        if (userType.equals("Users.Student")) {
-            addButton.setVisible(false);
-            modifyButton.setVisible(false);
-            deleteButton.setVisible(false);
-        } else
-            reserveButton.setVisible(false);
-
-
-        ISBNColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("1223"));
-        subjectColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("Math"));
-        authorColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("James Gun"));
-        publishDateColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("22/12/1999"));
-        titleColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("Math for War"));
-        borrowerIDColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("1"));
-        availableColumn.setCellValueFactory(new PropertyValueFactory<Book, Boolean>("true"));
-
-        booksTableView.setItems(SqlViewAllBook.main());
-        System.out.println(SqlViewAllBook.main());
-    }
 }
 

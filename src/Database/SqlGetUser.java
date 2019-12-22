@@ -83,6 +83,7 @@ public class SqlGetUser {
         }
         return null;
     }
+
     public static Admin returnAdmin(int userIdInt) {
 
         Connection connection = null;
@@ -133,6 +134,7 @@ public class SqlGetUser {
         }
         return null;
     }
+
     public static Librarian returnLibrarian(int userIdInt) {
 
         Connection connection = null;
@@ -183,6 +185,7 @@ public class SqlGetUser {
         }
         return null;
     }
+
     public static Student returnStudent(int userIdInt) {
 
         Connection connection = null;
@@ -235,4 +238,5 @@ public class SqlGetUser {
         }
         return null;
     }
+
 }

@@ -8,25 +8,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
 
 public class ViewStudentController {
-    @FXML
-    public Button addButton;
-    @FXML
-    public Button modifyButton;
-    @FXML
-    public Button deleteButton;
-    @FXML
-    public Button backButton;
-    @FXML
-    public Button blockButton;
-    @FXML
-    public TableView studentTable;
+    @FXML public Button addButton;
+    @FXML public Button modifyButton;
+    @FXML public Button deleteButton;
+    @FXML public Button backButton;
+    @FXML public Button blockButton;
+    @FXML public TableView studentTable;
 
-    @FXML
-    public void add() {
+    @FXML public void add() {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("../GUI/AddStudent.fxml"));
             Stage stage = new Stage(StageStyle.DECORATED);
@@ -39,8 +31,8 @@ public class ViewStudentController {
             e.printStackTrace();
         }
     }
-    @FXML
-    public void modify() {
+
+    @FXML public void modify() {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("../GUI/ModifyStudent.fxml"));
             Stage stage = new Stage(StageStyle.DECORATED);
@@ -53,17 +45,18 @@ public class ViewStudentController {
             e.printStackTrace();
         }
     }
-    @FXML
-    public void delete() {
+
+    @FXML public void delete() {
 
     }
-    @FXML
-    public void block() {
+
+    @FXML public void block() {
 
     }
-    @FXML
-    public void back() {
+
+    @FXML public void back() {
         Stage stageToBeClosed = (Stage) backButton.getScene().getWindow();
         stageToBeClosed.close();
     }
+
 }

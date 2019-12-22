@@ -2,30 +2,31 @@ package Users;
 
 import Database.SqlReserveBook;
 import Database.SqlViewAllBook;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 public class Student extends User{
-    private int fine;
-    private boolean blocked;
+    private SimpleIntegerProperty fine;
+    private SimpleBooleanProperty blocked;
 
     // default constructor
-    public Student(){ super(); setFine(0); setBlocked(false);}
+    public Student(){ super(); fine = null; blocked = null;}
 
     // constructor
-    public Student(int id, String firstNameStr, String lastNameStr, String typeStr, int fineInt, boolean blockedBool, String usernameStr, String passwordStr){
-        super(id, firstNameStr, lastNameStr, typeStr, usernameStr, passwordStr);
-        setFine(fineInt);
-        setBlocked(blockedBool);
+    public Student(int id, String firstName, String lastName, String type, int fine, boolean blocked, String username, String password){
+        super(id, firstName, lastName, type, username, password);
+        setFine(fine);
+        setBlocked(blocked);
     }
 
     // setters
-    public void setFine(int fine){ this.fine = fine; }
-    private void setBlocked(boolean blocked) {
-        this.blocked = blocked;
-    }
+    public void setFine(int fine){ this.fine.set(fine); }
+    private void setBlocked(boolean blocked) { this.blocked.set(blocked); }
 
     //getters
-    public boolean getBlocked(){ return this.blocked; }
-    public int getFine(){ return this.fine; }
+    public boolean getBlocked(){ return this.blocked.get(); }
+    public int getFine(){ return this.fine.get(); }
 
     public String viewPersonalDetails(){ return this.toString(); }
     public int viewCurrentFine(){ return this.getFine(); }

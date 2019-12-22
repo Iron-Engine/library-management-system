@@ -1,5 +1,9 @@
 package Database;
 
+import Book.Book;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,7 +14,7 @@ public class SqlViewBorrowedBooks {
     private static final String USER = "WmkvokN2BI";
     private static final String PASSWORD = "4ex9HBssOm";
 
-    public static String main(int userIdInt) {
+    public static ObservableList<Book> main(int userIdInt) {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -26,15 +30,18 @@ public class SqlViewBorrowedBooks {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            ObservableList<Book> books = FXCollections.observableArrayList();
+
             while (resultSet.next()) {
-                 str += String.format("ISBN: %d\nTitle: %s\nAuthor: %s\nSubject: %s\nPublish Date: %s\n",
-                        resultSet.getInt(1),
+                books.add(new Book(resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
                         resultSet.getString(4),
-                        resultSet.getString(5));
+                        resultSet.getString(5),
+                        resultSet.getInt(6),
+                        resultSet.getBoolean(7)));
             }
-            return str;
+            return books;
 
         } catch (SQLException ex) {
 
@@ -61,4 +68,5 @@ public class SqlViewBorrowedBooks {
         }
         return null;
     }
+
 }

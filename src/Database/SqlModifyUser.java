@@ -9,9 +9,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-// obtain User as an object and using its id modifies its updated properties in database
-// tested, type method should be discussed
-
 public class SqlModifyUser {
 
     private static final String URL = "jdbc:mysql://remotemysql.com:3306/WmkvokN2BI";
@@ -61,5 +58,6 @@ public class SqlModifyUser {
             }
         }
     }
+
 }
 

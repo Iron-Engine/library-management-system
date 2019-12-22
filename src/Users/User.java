@@ -1,13 +1,15 @@
 package Users;
 import Book.Book;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 import java.util.Scanner;
 
 public class User {
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String type;
+    private SimpleIntegerProperty id;
+    private SimpleStringProperty firstName;
+    private SimpleStringProperty lastName;
+    private SimpleStringProperty type;
 
     public Book book;
     public Account account;
@@ -29,16 +31,16 @@ public class User {
         account = new Account(username, password);
     }
     // getters
-    public int getId(){ return this.id; }
-    public String getFirstName(){ return this.firstName; }
-    public String getLastName(){ return this.lastName; }
-    public String getType(){ return this.type; }
+    public int getId(){ return this.id.get(); }
+    public String getFirstName(){ return this.firstName.get(); }
+    public String getLastName(){ return this.lastName.get(); }
+    public String getType(){ return this.type.get(); }
 
     // setters
-    public void setId(int id){ this.id = id; }
-    private void setFirstName(String firstName){ this.firstName = firstName; }
-    private void setSecondName(String secondName){ this.lastName = secondName; }
-    private void setType(String typeStr) { this.type = typeStr; }
+    public void setId(int id){ this.id.set(id); }
+    private void setFirstName(String firstName){ this.firstName.set(firstName); }
+    private void setSecondName(String secondName){ this.lastName.set(secondName); }
+    private void setType(String typeStr) { this.type.set(typeStr); }
 
     public String toString(){
         return String.format("User ID: %d\nUser Firstname: %s\nUser Lastname: %s\nUser Type: %s\n",

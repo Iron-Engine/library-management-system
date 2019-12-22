@@ -2,6 +2,8 @@ package Users;
 
 import Book.Book;
 import Database.*;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 public class Librarian extends User{
 

@@ -1,10 +1,9 @@
 package Database;
 
 import Book.Book;
-import Users.User;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;

@@ -7,9 +7,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-// obtain User object and getting id delete this user
-// tested
-
 public class SqlDeleteUser {
 
     private static final String URL = "jdbc:mysql://remotemysql.com:3306/WmkvokN2BI";
@@ -53,5 +50,6 @@ public class SqlDeleteUser {
             }
         }
     }
+
 }
 

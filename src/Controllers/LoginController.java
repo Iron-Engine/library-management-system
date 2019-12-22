@@ -20,16 +20,11 @@ public class LoginController {
     public static Student student = new Student();
     public static Admin admin = new Admin();
 
-    @FXML
-    public Button loginButton;
-    @FXML
-    public TextField loginTextField;
-    @FXML
-    public PasswordField passwordTextField;
+    @FXML public Button loginButton;
+    @FXML public TextField loginTextField;
+    @FXML public PasswordField passwordTextField;
 
-
-    @FXML
-    public void login() {
+    @FXML public void login() {
         try {
             int id = user.account.login(loginTextField.getText(), passwordTextField.getText());
 
