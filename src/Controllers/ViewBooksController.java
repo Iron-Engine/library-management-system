@@ -1,6 +1,8 @@
 package Controllers;
 
 import Book.Book;
+import Database.SqlDeleteUser;
+import Database.SqlGetBook;
 import Database.SqlViewAllBook;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -19,6 +22,9 @@ import java.util.ResourceBundle;
 
 public class ViewBooksController implements Initializable {
 
+    public static Book book = new Book();
+
+    @FXML public TextField isbnTextField;
     @FXML public Button addButton;
     @FXML public Button modifyButton;
     @FXML public Button deleteButton;
@@ -71,20 +77,52 @@ public class ViewBooksController implements Initializable {
 
     @FXML public void modify() {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("../GUI/ModifyBook.fxml"));
-            Stage stage = new Stage(StageStyle.DECORATED);
-            stage.setResizable(false);
-            stage.setTitle("Modify Book");
-            stage.setScene(new Scene(parent));
-            stage.show();
+            try {
+                book = SqlGetBook.main(Integer.parseInt(isbnTextField.getText()));
 
+                Parent parent = FXMLLoader.load(getClass().getResource("../GUI/ModifyBook.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                stage.setResizable(false);
+                stage.setTitle("Modify Book");
+                stage.setScene(new Scene(parent));
+                stage.show();
+            } catch (NumberFormatException e) {
+                try {
+                    SuccessErrorController.message = "No Book (ISBN) found!";
+                    Parent parent = FXMLLoader.load(getClass().getResource("../GUI/SuccessError.fxml"));
+                    Stage stage = new Stage(StageStyle.DECORATED);
+                    stage.setResizable(false);
+                    stage.setTitle("Something Wrong");
+                    stage.setScene(new Scene(parent));
+                    stage.show();
+
+                } catch (IOException e2) {
+                    e2.printStackTrace();
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML public void delete() {
+        try {
+            new SqlDeleteUser().main(Integer.parseInt(isbnTextField.getText()));
+        }
+        catch (NumberFormatException e) {
+            try {
+                SuccessErrorController.message = "No Book (ISBN) found!";
+                Parent parent = FXMLLoader.load(getClass().getResource("../GUI/SuccessError.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                stage.setResizable(false);
+                stage.setTitle("Something Wrong");
+                stage.setScene(new Scene(parent));
+                stage.show();
 
+            } catch (IOException e2) {
+                e2.printStackTrace();
+            }
+        }
     }
 
     @FXML public void back() {

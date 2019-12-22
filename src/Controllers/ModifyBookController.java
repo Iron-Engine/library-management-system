@@ -2,15 +2,18 @@ package Controllers;
 
 import Book.Book;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
 
-public class ModifyBookController {
+public class ModifyBookController implements Initializable {
 
     @FXML public Button modifyButton;
     @FXML public TextField ISBNTextField;
@@ -25,13 +28,14 @@ public class ModifyBookController {
         String publishDateString = publishDateLocalDate.format(formatter);
 
         Book book = new Book(
-                Integer.parseInt(ISBNTextField.getText()),
+                ViewBooksController.book.getIsbn(),
                 titleTextField.getText(),
                 authorTextField.getText(),
                 publishDateString,
                 subjectTextField.getText(),
-                0,
-                true
+                ViewBooksController.book.getBorrowerId(),
+                ViewBooksController.book.getStatus()
+
         );
         LoginController.librarian.modifyBook(book);
 
@@ -39,4 +43,11 @@ public class ModifyBookController {
         stageToBeClosed.close();
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ISBNTextField.setText(Integer.toString(ViewBooksController.book.getIsbn()));
+        subjectTextField.setText(ViewBooksController.book.getSubject());
+        authorTextField.setText(ViewBooksController.book.getAuthor());
+        titleTextField.setText(ViewBooksController.book.getTitle());
+    }
 }

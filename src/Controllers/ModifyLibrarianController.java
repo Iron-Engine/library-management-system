@@ -2,12 +2,16 @@ package Controllers;
 
 import Users.Librarian;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class ModifyLibrarianController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ModifyLibrarianController implements Initializable {
 
     @FXML public Button modifyButton;
     @FXML public TextField firstNameTextField;
@@ -17,10 +21,10 @@ public class ModifyLibrarianController {
 
     @FXML public void modify(){
         Librarian librarian = new Librarian(
-                0,
+                ViewLibrariansController.librarian.getId(),
                 firstNameTextField.getText(),
                 lastNameTextField.getText(),
-                "Users.Librarian",
+                ViewStudentController.student.getType(),
                 loginTextField.getText(),
                 passwordPasswordField.getText()
         );
@@ -28,5 +32,13 @@ public class ModifyLibrarianController {
 
         Stage stageToBeClosed = (Stage) modifyButton.getScene().getWindow();
         stageToBeClosed.close();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        firstNameTextField.setText(ViewLibrariansController.librarian.getFirstName());
+        lastNameTextField.setText(ViewLibrariansController.librarian.getLastName());
+        loginTextField.setText(ViewLibrariansController.librarian.getUsername());
+        passwordPasswordField.setText(ViewLibrariansController.librarian.getPassword());
     }
 }

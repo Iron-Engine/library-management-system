@@ -3,12 +3,16 @@ package Controllers;
 import Users.Librarian;
 import Users.Student;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class ModifyStudentController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ModifyStudentController implements Initializable {
 
     @FXML public Button modifyButton;
     @FXML public TextField firstNameTextField;
@@ -20,12 +24,12 @@ public class ModifyStudentController {
 
     @FXML public void modify(){
         Student student = new Student(
-                0,
+                ViewStudentController.student.getId(),
                 firstNameTextField.getText(),
                 lastNameTextField.getText(),
-                "Users.Librarian",
-                0,
-                false,
+                ViewStudentController.student.getType(),
+                Integer.parseInt(fineTextField.getText()),
+                Boolean.parseBoolean(blockedTextField.getText()),
                 loginTextField.getText(),
                 passwordPasswordField.getText()
         );
@@ -35,4 +39,13 @@ public class ModifyStudentController {
         stageToBeClosed.close();
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        firstNameTextField.setText(ViewStudentController.student.getFirstName());
+        lastNameTextField.setText(ViewStudentController.student.getLastName());
+        loginTextField.setText(ViewStudentController.student.getUsername());
+        passwordPasswordField.setText(ViewStudentController.student.getPassword());
+        fineTextField.setText(Integer.toString(ViewStudentController.student.getFine()));
+        blockedTextField.setText(Boolean.toString(ViewStudentController.student.getBlocked()));
+    }
 }

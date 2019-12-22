@@ -1,5 +1,8 @@
 package Controllers;
 
+import Database.SqlBlockUser;
+import Database.SqlDeleteUser;
+import Database.SqlGetUser;
 import Database.SqlViewUserType;
 import Users.Student;
 import javafx.fxml.FXML;
@@ -10,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -18,6 +22,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ViewStudentController implements Initializable {
+
+    public static Student student= new Student();
+
+    @FXML public TextField idTextField;
     @FXML public Button addButton;
     @FXML public Button modifyButton;
     @FXML public Button deleteButton;
@@ -48,24 +56,72 @@ public class ViewStudentController implements Initializable {
 
     @FXML public void modify() {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("../GUI/ModifyStudent.fxml"));
-            Stage stage = new Stage(StageStyle.DECORATED);
-            stage.setResizable(false);
-            stage.setTitle("Modify Books");
-            stage.setScene(new Scene(parent));
-            stage.show();
+            try {
+                student = new SqlGetUser().returnStudent(Integer.parseInt(idTextField.getText()));
+                Parent parent = FXMLLoader.load(getClass().getResource("../GUI/ModifyStudent.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                stage.setResizable(false);
+                stage.setTitle("Modify Books");
+                stage.setScene(new Scene(parent));
+                stage.show();
+            }
+            catch (NumberFormatException e) {
+                try {
+                    SuccessErrorController.message = "No Student (ID) found!";
+                    Parent parent = FXMLLoader.load(getClass().getResource("../GUI/SuccessError.fxml"));
+                    Stage stage = new Stage(StageStyle.DECORATED);
+                    stage.setResizable(false);
+                    stage.setTitle("Something Wrong");
+                    stage.setScene(new Scene(parent));
+                    stage.show();
 
+                } catch (IOException e2) {
+                    e2.printStackTrace();
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML public void delete() {
+        try {
+            new SqlDeleteUser().main(Integer.parseInt(idTextField.getText()));
+        }
+        catch (NumberFormatException e) {
+            try {
+                SuccessErrorController.message = "No Student (ID) found!";
+                Parent parent = FXMLLoader.load(getClass().getResource("../GUI/SuccessError.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                stage.setResizable(false);
+                stage.setTitle("Something Wrong");
+                stage.setScene(new Scene(parent));
+                stage.show();
 
+            } catch (IOException e2) {
+                e2.printStackTrace();
+            }
+        }
     }
 
     @FXML public void block() {
+        try {
+            new SqlBlockUser().main(Integer.parseInt(idTextField.getText()));
+        }
+        catch (NumberFormatException e) {
+            try {
+                SuccessErrorController.message = "No Student (ID) found!";
+                Parent parent = FXMLLoader.load(getClass().getResource("../GUI/SuccessError.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                stage.setResizable(false);
+                stage.setTitle("Something Wrong");
+                stage.setScene(new Scene(parent));
+                stage.show();
 
+            } catch (IOException e2) {
+                e2.printStackTrace();
+            }
+        }
     }
 
     @FXML public void back() {
