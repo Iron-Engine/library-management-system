@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="741.0" prefWidth="1071.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ViewMyBooksController">
+    <TableView fx:id="booksTableView" layoutX="-1.0" layoutY="110.0" prefHeight="592.0" prefWidth="1000.0" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0">
+    <columns>
+        <TableColumn fx:id="ISBNColumn" maxWidth="4500.0" prefWidth="101.99998474121094" text="ISBN" />
+        <TableColumn fx:id="subjectColumn" maxWidth="6000.0" prefWidth="190.00001525878906" text="Subject" />
+        <TableColumn fx:id="authorColumn" minWidth="0.0" prefWidth="209.0" text="Author" />
+        <TableColumn fx:id="publishDateColumn" minWidth="0.0" prefWidth="142.0" text="Publish Date" />
+        <TableColumn fx:id="titleColumn" minWidth="0.0" prefWidth="257.0" text="Title" />
+        <TableColumn fx:id="borrowerIDColumn" maxWidth="2500.0" prefWidth="82.0" text="Borrower ID" />
+        <TableColumn fx:id="availableColumn" maxWidth="3000.0" prefWidth="98.0" text="Available" />
+    </columns>
+    </TableView>
+   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="476.0" layoutY="30.0" text="My Books" textAlignment="CENTER" textFill="#edeaea">
+      <font>
+         <Font name="Arial Black" size="32.0" />
+      </font>
+   </Label>
+   <Button fx:id="backButton" layoutX="39.0" layoutY="31.0" mnemonicParsing="false" onAction="#back" prefHeight="48.0" prefWidth="75.0" text="⟸">
+      <font>
+         <Font size="22.0" />
+      </font>
+   </Button>
+</AnchorPane>

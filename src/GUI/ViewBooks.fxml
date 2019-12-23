@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="741.0" prefWidth="1071.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ViewBooksController">
+    <TableView fx:id="booksTableView" layoutX="-1.0" layoutY="110.0" prefHeight="502.0" prefWidth="1072.0" AnchorPane.bottomAnchor="129.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0">
+    <columns>
+        <TableColumn fx:id="ISBNColumn" maxWidth="4500.0" prefWidth="205.59996336698532" text="ISBN" />
+        <TableColumn fx:id="subjectColumn" maxWidth="6000.0" prefWidth="159.20001220703125" text="Subject" />
+        <TableColumn fx:id="authorColumn" minWidth="0.0" prefWidth="133.066650390625" text="Author" />
+        <TableColumn fx:id="publishDateColumn" minWidth="0.0" prefWidth="137.33331298828125" text="Publish Date" />
+        <TableColumn fx:id="titleColumn" minWidth="0.0" prefWidth="222.933349609375" text="TItle" />
+        <TableColumn fx:id="borrowerIDColumn" maxWidth="2500.0" prefWidth="122.6666259765625" text="Borrower ID" />
+        <TableColumn fx:id="availableColumn" maxWidth="3000.0" prefWidth="94.39996337890625" text="Available" />
+    </columns>
+    </TableView>
+   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="476.0" layoutY="30.0" text="Books" textAlignment="CENTER" textFill="#edeaea">
+      <font>
+         <Font name="Arial Black" size="32.0" />
+      </font>
+   </Label>
+   <Button fx:id="deleteButton" layoutX="350.0" layoutY="650.0" mnemonicParsing="false" onAction="#delete" prefHeight="37.0" prefWidth="126.0" text="Delete">
+      <font>
+         <Font size="22.0" />
+      </font>
+   </Button>
+   <Button fx:id="addButton" layoutX="107.0" layoutY="650.0" mnemonicParsing="false" onAction="#add" prefHeight="47.0" prefWidth="126.0" text="Add">
+      <font>
+         <Font size="22.0" />
+      </font>
+   </Button>
+   <Button fx:id="modifyButton" layoutX="595.0" layoutY="650.0" mnemonicParsing="false" onAction="#modify" prefHeight="48.0" prefWidth="126.0" text="Modify">
+      <font>
+         <Font size="22.0" />
+      </font>
+   </Button>
+   <Button fx:id="backButton" layoutX="39.0" layoutY="31.0" mnemonicParsing="false" onAction="#back" prefHeight="48.0" prefWidth="75.0" text="⟸">
+      <font>
+         <Font size="22.0" />
+      </font>
+   </Button>
+   <Button fx:id="reserveButton" layoutX="595.0" layoutY="650.0" mnemonicParsing="false" onAction="#reserve" prefHeight="37.0" prefWidth="126.0" text="Reserve">
+      <font>
+         <Font size="22.0" />
+      </font>
+   </Button>
+   <TextField fx:id="isbnTextField" layoutX="815.0" layoutY="659.0" promptText="ISBN">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </TextField>
+</AnchorPane>

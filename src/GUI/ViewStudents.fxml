@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="713.0" prefWidth="883.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ViewStudentController">
+    <TableView fx:id="studentTableView" layoutX="-1.0" layoutY="110.0" prefHeight="508.0" prefWidth="1000.0" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="110.0">
+    <columns>
+        <TableColumn fx:id="idColumn" maxWidth="4500.0" prefWidth="71.0" text="ID" />
+        <TableColumn fx:id="firstNameColumn" maxWidth="6000.0" prefWidth="164.99998474121094" text="First Name" />
+        <TableColumn fx:id="lastNameColumn" minWidth="0.0" prefWidth="190.0" text="Last Name" />
+         <TableColumn fx:id="fineColumn" prefWidth="74.0" text="Fine" />
+        <TableColumn fx:id="usernameColumn" minWidth="0.0" prefWidth="156.0" text="Username" />
+        <TableColumn fx:id="passwordColumn" minWidth="0.0" prefWidth="157.5999755859375" text="Password" />
+         <TableColumn fx:id="blockedColumn" prefWidth="144.0" text="Blocked" />
+    </columns>
+    </TableView>
+   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="377.0" layoutY="31.0" text="Students" textAlignment="CENTER" textFill="#edeaea">
+      <font>
+         <Font name="Arial Black" size="32.0" />
+      </font>
+   </Label>
+   <Button fx:id="deleteButton" layoutX="534.0" layoutY="640.0" mnemonicParsing="false" onAction="#delete" prefHeight="37.0" prefWidth="126.0" text="Delete">
+      <font>
+         <Font size="22.0" />
+      </font>
+   </Button>
+   <Button fx:id="addButton" layoutX="31.0" layoutY="640.0" mnemonicParsing="false" onAction="#add" prefHeight="47.0" prefWidth="126.0" text="Add">
+      <font>
+         <Font size="22.0" />
+      </font>
+   </Button>
+   <Button fx:id="modifyButton" layoutX="193.0" layoutY="640.0" mnemonicParsing="false" onAction="#modify" prefHeight="48.0" prefWidth="126.0" text="Modify">
+      <font>
+         <Font size="22.0" />
+      </font>
+   </Button>
+   <Button fx:id="backButton" layoutX="39.0" layoutY="31.0" mnemonicParsing="false" onAction="#back" prefHeight="48.0" prefWidth="75.0" text="⟸">
+      <font>
+         <Font size="22.0" />
+      </font>
+   </Button>
+   <Button fx:id="blockButton" layoutX="355.0" layoutY="640.0" mnemonicParsing="false" onAction="#block" prefHeight="48.0" prefWidth="126.0" text="Block">
+      <font>
+         <Font size="22.0" />
+      </font>
+   </Button>
+   <TextField fx:id="idTextField" layoutX="683.0" layoutY="649.0" promptText="ID">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </TextField>
+</AnchorPane>
