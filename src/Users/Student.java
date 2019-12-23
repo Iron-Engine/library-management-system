@@ -34,7 +34,6 @@ public class Student extends User{
     public boolean reserveBorrowedBook(int bookIsbnInt){
         return SqlReserveBook.main(bookIsbnInt, this.getId());
     }
-//    public String viewAllBook(){ return SqlViewAllBook.main(); }
 
     public String toString(){
         return super.toString()

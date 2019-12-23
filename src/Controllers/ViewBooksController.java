@@ -1,10 +1,7 @@
 package Controllers;
 
 import Book.Book;
-import Database.SqlDeleteUser;
-import Database.SqlGetBook;
-import Database.SqlReserveBook;
-import Database.SqlViewAllBook;
+import Database.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,6 +28,7 @@ public class ViewBooksController implements Initializable {
     @FXML public Button deleteButton;
     @FXML public Button backButton;
     @FXML public Button reserveButton;
+    @FXML public Button refreshButton;
     @FXML public TableView<Book> booksTableView;
     @FXML public TableColumn<Book, Integer> ISBNColumn;
     @FXML public TableColumn<Book, String> subjectColumn;
@@ -38,7 +36,7 @@ public class ViewBooksController implements Initializable {
     @FXML public TableColumn<Book, String> publishDateColumn;
     @FXML public TableColumn<Book, String> titleColumn;
     @FXML public TableColumn<Book, Integer> borrowerIDColumn;
-    @FXML public TableColumn<Book, Boolean> availableColumn;
+    @FXML public TableColumn<Book, Boolean> statusColumn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -57,8 +55,7 @@ public class ViewBooksController implements Initializable {
         publishDateColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("publishDate"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
         borrowerIDColumn.setCellValueFactory(new PropertyValueFactory<Book, Integer>("borrowerId"));
-        availableColumn.setCellValueFactory(new PropertyValueFactory<Book, Boolean>("status"));
-
+        statusColumn.setCellValueFactory(new PropertyValueFactory<Book, Boolean>("status"));
         booksTableView.setItems(SqlViewAllBook.main());
     }
 
@@ -108,7 +105,19 @@ public class ViewBooksController implements Initializable {
 
     @FXML public void delete() {
         try {
-            new SqlDeleteUser().main(Integer.parseInt(isbnTextField.getText()));
+            SqlDeleteBook.main(Integer.parseInt(isbnTextField.getText()));
+            try {
+                SuccessErrorController.message = "Book is Deleted!";
+                Parent parent2 = FXMLLoader.load(getClass().getResource("../GUI/SuccessError.fxml"));
+                Stage stage2 = new Stage(StageStyle.DECORATED);
+                stage2.setResizable(false);
+                stage2.setTitle("Everything is Ok");
+                stage2.setScene(new Scene(parent2));
+                stage2.show();
+
+            } catch (IOException e2) {
+                e2.printStackTrace();
+            }
         }
         catch (NumberFormatException e) {
             try {
@@ -133,7 +142,20 @@ public class ViewBooksController implements Initializable {
 
     @FXML public void reserve(){
         try {
-            new SqlReserveBook().main(Integer.parseInt(isbnTextField.getText()), LoginController.student.getId());
+            SqlReserveBook.main(Integer.parseInt(isbnTextField.getText()), LoginController.student.getId());
+            System.out.println(LoginController.student.getId());
+            try {
+                SuccessErrorController.message = "Book is Reserved!";
+                Parent parent2 = FXMLLoader.load(getClass().getResource("../GUI/SuccessError.fxml"));
+                Stage stage2 = new Stage(StageStyle.DECORATED);
+                stage2.setResizable(false);
+                stage2.setTitle("Everything is Ok");
+                stage2.setScene(new Scene(parent2));
+                stage2.show();
+
+            } catch (IOException e2) {
+                e2.printStackTrace();
+            }
         }
         catch (NumberFormatException e) {
             try {
@@ -148,6 +170,22 @@ public class ViewBooksController implements Initializable {
             } catch (IOException e2) {
                 e2.printStackTrace();
             }
+        }
+    }
+
+    @FXML public void refresh(){
+        Stage stageToBeClosed = (Stage) refreshButton.getScene().getWindow();
+        stageToBeClosed.close();
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("../GUI/ViewBooks.fxml"));
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setResizable(false);
+            stage.setTitle("Books");
+            stage.setScene(new Scene(parent));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

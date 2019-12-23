@@ -31,6 +31,7 @@ public class ViewStudentController implements Initializable {
     @FXML public Button deleteButton;
     @FXML public Button backButton;
     @FXML public Button blockButton;
+    @FXML public Button refreshButton;
     @FXML public TableView<Student> studentTableView;
     @FXML public TableColumn<Student, Integer> idColumn;
     @FXML public TableColumn<Student, String> firstNameColumn;
@@ -39,6 +40,19 @@ public class ViewStudentController implements Initializable {
     @FXML public TableColumn<Student, String> usernameColumn;
     @FXML public TableColumn<Student, String> passwordColumn;
     @FXML public TableColumn<Student, Boolean> blockedColumn;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        idColumn.setCellValueFactory(new PropertyValueFactory<Student, Integer>("id"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("firstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("lastName"));
+        fineColumn.setCellValueFactory(new PropertyValueFactory<Student, Integer>("fine"));
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("username"));
+        passwordColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("password"));
+        blockedColumn.setCellValueFactory(new PropertyValueFactory<Student, Boolean>("blocked"));
+
+        studentTableView.setItems(SqlViewUserType.student());
+    }
 
     @FXML public void add() {
         try {
@@ -57,7 +71,7 @@ public class ViewStudentController implements Initializable {
     @FXML public void modify() {
         try {
             try {
-                student = new SqlGetUser().returnStudent(Integer.parseInt(idTextField.getText()));
+                student = SqlGetUser.returnStudent(Integer.parseInt(idTextField.getText()));
                 Parent parent = FXMLLoader.load(getClass().getResource("../GUI/ModifyStudent.fxml"));
                 Stage stage = new Stage(StageStyle.DECORATED);
                 stage.setResizable(false);
@@ -86,7 +100,19 @@ public class ViewStudentController implements Initializable {
 
     @FXML public void delete() {
         try {
-            new SqlDeleteUser().main(Integer.parseInt(idTextField.getText()));
+            SqlDeleteUser.main(Integer.parseInt(idTextField.getText()));
+            try {
+                SuccessErrorController.message = "Student is Deleted!";
+                Parent parent2 = FXMLLoader.load(getClass().getResource("../GUI/SuccessError.fxml"));
+                Stage stage2 = new Stage(StageStyle.DECORATED);
+                stage2.setResizable(false);
+                stage2.setTitle("Everything is Ok");
+                stage2.setScene(new Scene(parent2));
+                stage2.show();
+
+            } catch (IOException e2) {
+                e2.printStackTrace();
+            }
         }
         catch (NumberFormatException e) {
             try {
@@ -106,7 +132,19 @@ public class ViewStudentController implements Initializable {
 
     @FXML public void block() {
         try {
-            new SqlBlockUser().main(Integer.parseInt(idTextField.getText()));
+            SqlBlockUser.main(Integer.parseInt(idTextField.getText()));
+            try {
+                SuccessErrorController.message = "Student is Blocked!";
+                Parent parent2 = FXMLLoader.load(getClass().getResource("../GUI/SuccessError.fxml"));
+                Stage stage2 = new Stage(StageStyle.DECORATED);
+                stage2.setResizable(false);
+                stage2.setTitle("Everything is Ok");
+                stage2.setScene(new Scene(parent2));
+                stage2.show();
+
+            } catch (IOException e2) {
+                e2.printStackTrace();
+            }
         }
         catch (NumberFormatException e) {
             try {
@@ -129,16 +167,20 @@ public class ViewStudentController implements Initializable {
         stageToBeClosed.close();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        idColumn.setCellValueFactory(new PropertyValueFactory<Student, Integer>("id"));
-        firstNameColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("firstName"));
-        lastNameColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("lastName"));
-        fineColumn.setCellValueFactory(new PropertyValueFactory<Student, Integer>("fine"));
-        usernameColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("username"));
-        passwordColumn.setCellValueFactory(new PropertyValueFactory<Student, String>("password"));
-        blockedColumn.setCellValueFactory(new PropertyValueFactory<Student, Boolean>("blocked"));
+    @FXML public void refresh(){
+        Stage stageToBeClosed = (Stage) refreshButton.getScene().getWindow();
+        stageToBeClosed.close();
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("../GUI/ViewStudents.fxml"));
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setResizable(false);
+            stage.setTitle("Books");
+            stage.setScene(new Scene(parent));
+            stage.show();
 
-        studentTableView.setItems(SqlViewUserType.student());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 }

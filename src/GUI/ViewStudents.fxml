@@ -51,4 +51,9 @@
          <Font size="14.0" />
       </font>
    </TextField>
+   <Button fx:id="refreshButton" layoutX="732.0" layoutY="35.0" mnemonicParsing="false" onAction="#refresh" text="Refresh">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Button>
 </AnchorPane>

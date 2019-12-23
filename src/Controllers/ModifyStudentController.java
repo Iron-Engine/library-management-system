@@ -3,12 +3,17 @@ package Controllers;
 import Users.Librarian;
 import Users.Student;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -23,20 +28,47 @@ public class ModifyStudentController implements Initializable {
     @FXML public TextField blockedTextField;
 
     @FXML public void modify(){
-        Student student = new Student(
-                ViewStudentController.student.getId(),
-                firstNameTextField.getText(),
-                lastNameTextField.getText(),
-                ViewStudentController.student.getType(),
-                Integer.parseInt(fineTextField.getText()),
-                Boolean.parseBoolean(blockedTextField.getText()),
-                loginTextField.getText(),
-                passwordPasswordField.getText()
-        );
-        new Librarian().modifyStudent(student);
+        try {
+            Student student = new Student(
+                    ViewStudentController.student.getId(),
+                    firstNameTextField.getText(),
+                    lastNameTextField.getText(),
+                    ViewStudentController.student.getType(),
+                    Integer.parseInt(fineTextField.getText()),
+                    Boolean.parseBoolean(blockedTextField.getText()),
+                    loginTextField.getText(),
+                    passwordPasswordField.getText()
+            );
+            new Librarian().modifyStudent(student);
 
-        Stage stageToBeClosed = (Stage) modifyButton.getScene().getWindow();
-        stageToBeClosed.close();
+            Stage stageToBeClosed = (Stage) modifyButton.getScene().getWindow();
+            stageToBeClosed.close();
+            try {
+                SuccessErrorController.message = "Student is Modified!";
+                Parent parent = FXMLLoader.load(getClass().getResource("../GUI/SuccessError.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                stage.setResizable(false);
+                stage.setTitle("Everything is Ok");
+                stage.setScene(new Scene(parent));
+                stage.show();
+
+            } catch (IOException e2) {
+                e2.printStackTrace();
+            }
+        } catch (NullPointerException e){
+            try {
+                SuccessErrorController.message = "Wrong Input!";
+                Parent parent = FXMLLoader.load(getClass().getResource("../GUI/SuccessError.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                stage.setResizable(false);
+                stage.setTitle("Something wrong");
+                stage.setScene(new Scene(parent));
+                stage.show();
+
+            } catch (IOException e3) {
+                e3.printStackTrace();
+            }
+        }
     }
 
     @Override

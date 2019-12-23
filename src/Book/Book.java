@@ -37,7 +37,7 @@ public class Book {
     }
 
     // setters
-    private void setIsbn(int isbn){ this.isbn = new SimpleIntegerProperty(isbn); }
+    public void setIsbn(int isbn){ this.isbn = new SimpleIntegerProperty(isbn); }
     private void setTitle(String title){
         this.title = new SimpleStringProperty(title);
     }
@@ -50,7 +50,7 @@ public class Book {
     private void setSubject(String subject){
         this.subject = new SimpleStringProperty(subject);
     }
-    private void setBorrowerId(int borrowerId) { this.borrowerId = new SimpleIntegerProperty(borrowerId); }
+    public void setBorrowerId(int borrowerId) { this.borrowerId = new SimpleIntegerProperty(borrowerId); }
     private void setStatus(boolean status){
         this.status = new SimpleBooleanProperty();
     }
