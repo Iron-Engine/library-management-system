@@ -28,6 +28,7 @@ public class ViewLibrariansController implements Initializable {
     @FXML public Button modifyButton;
     @FXML public Button deleteButton;
     @FXML public Button backButton;
+    @FXML public Button refreshButton;
     @FXML public TextField idTextField;
     @FXML public TableView<Librarian> librariansTableView;
     @FXML public TableColumn<Librarian, Integer> idColumn;
@@ -94,7 +95,19 @@ public class ViewLibrariansController implements Initializable {
 
     @FXML public void delete() {
         try {
-            new SqlDeleteUser().main(Integer.parseInt(idTextField.getText()));
+            SqlDeleteUser.main(Integer.parseInt(idTextField.getText()));
+            try {
+                SuccessErrorController.message = "Librarian is Deleted!";
+                Parent parent2 = FXMLLoader.load(getClass().getResource("../GUI/SuccessError.fxml"));
+                Stage stage2 = new Stage(StageStyle.DECORATED);
+                stage2.setResizable(false);
+                stage2.setTitle("Everything is Ok");
+                stage2.setScene(new Scene(parent2));
+                stage2.show();
+
+            } catch (IOException e2) {
+                e2.printStackTrace();
+            }
         }
         catch (NumberFormatException e) {
             try {
@@ -115,6 +128,22 @@ public class ViewLibrariansController implements Initializable {
     @FXML public void back() {
         Stage stageToBeClosed = (Stage) backButton.getScene().getWindow();
         stageToBeClosed.close();
+    }
+
+    @FXML public void refresh(){
+        Stage stageToBeClosed = (Stage) refreshButton.getScene().getWindow();
+        stageToBeClosed.close();
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("../GUI/ViewLibrarians.fxml"));
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setResizable(false);
+            stage.setTitle("Books");
+            stage.setScene(new Scene(parent));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

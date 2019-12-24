@@ -5,7 +5,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="741.0" prefWidth="758.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ViewLibrariansController">
-    <TableView fx:id="librariansTableView" layoutX="-1.0" layoutY="110.0" prefHeight="502.0" prefWidth="786.0" AnchorPane.bottomAnchor="129.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="110.0">
+    <TableView fx:id="librariansTableView" layoutX="-1.0" layoutY="110.0" prefHeight="490.0" prefWidth="786.0" AnchorPane.bottomAnchor="129.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="110.0">
     <columns>
         <TableColumn fx:id="idColumn" maxWidth="4500.0" prefWidth="124.53335875272751" text="ID" />
         <TableColumn fx:id="firstNameColumn" maxWidth="6000.0" prefWidth="146.6666259765625" text="First Name" />
@@ -44,4 +44,9 @@
          <Font size="14.0" />
       </font>
    </TextField>
+   <Button fx:id="refreshButton" layoutX="630.0" layoutY="30.0" mnemonicParsing="false" onAction="#refresh" text="Refresh">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Button>
 </AnchorPane>
